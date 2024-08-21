@@ -46,5 +46,7 @@ Start server
 
 **Back-end:** Node, Express, Mongoose
 
+**Tests:** Jest (comming soon)
+
 **Database (NOSql):** MongoDB 
 
