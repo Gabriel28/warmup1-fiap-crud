@@ -44,7 +44,7 @@ Start server
 
 ## Stack
 
-**Back-end:** Node, Express
+**Back-end:** Node, Express, Mongoose
 
 **Database (NOSql):** MongoDB 
 
