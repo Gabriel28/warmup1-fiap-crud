@@ -3,7 +3,7 @@ import books from "../models/Book.js";
 class BooksController {
 
     static getAllBooks = (req, res) => {
-        books.find((err, book) => {
+        books.find().populate('author').exec((err, book) => {
             res.status(200).json(book);
         })
     }
@@ -51,6 +51,27 @@ class BooksController {
             } else {
                 res.status(500).send(`${err.message}`)
             }
+        })
+    }
+
+    static listBookByQuery = (req, res) => {
+        const data = req.query.data;
+        const type = req.query.type;
+        let findtype;
+        switch (type) {
+            case "publisher":
+                findtype = {'publisher': data};
+                break;
+            case "author":
+                findtype = {'author': data}
+                break;
+            default:
+                res.send(404).send(`${data} Not found`);
+        };
+        console.log(findtype);
+        console.log(data)
+        books.find(findtype, {}, (err, book) => {
+            !err ? res.status(200).send(book) : res.status(500).send(`${err.message}`)
         })
     }
 }
