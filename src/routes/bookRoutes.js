@@ -7,6 +7,7 @@ const router = express.Router();
 - GET
 */
 router.get("/api/library/books", BooksController.getAllBooks);
+router.get("/api/library/books/search", BooksController.listBookByQuery);
 router.get("/api/library/book/:id", BooksController.getBookById);
 
 /*
