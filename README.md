@@ -21,7 +21,7 @@ To run this project, you will need to add some environment variables to your.env
 Clone the project
 
 ```bash
-  git clone https://link-para-o-projeto
+  git clone https://github.com/Gabriel28/warmup1-fiap-crud.git
 ```
 
 Enter the directory project
