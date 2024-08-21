@@ -1,10 +1,9 @@
 
-# Library Node
+# Library Node - Finished: 21/08/2024
 
 A simple CRUD project created on ALURA to WarmUp of FIAP Couse Software Architecture.
 
 This CRUD is based on a library, we can perform actions such as exemple: 
-
 
 
 ## API Documentation
