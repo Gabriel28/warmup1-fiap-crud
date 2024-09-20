@@ -41,6 +41,7 @@ Start server
   npm run dev
 ```
 
+> Por hora, MongoDB local, para praticar irei subir um Docker no futuro.
 
 ## Stack
 
