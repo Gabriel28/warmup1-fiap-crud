@@ -2,32 +2,35 @@ import books from "../models/Book.js";
 
 class BooksController {
 
-    static getAllBooks = (req, res) => {
-        books.find().populate('author').exec((err, book) => {
-            res.status(200).json(book);
-        })
+    static getAllBooks = async (req, res) => {
+        try {
+            const allBooks = await books.find().populate('author').exec((err, book) => {
+                res.status(200).json(allBooks);
+            })
+        } catch (error) {
+            res.status(500).json({ message: "Erro ao obter os livros", error: error.message}, );
+        }
     }
 
-    static getBookById = (req, res) => {
+    static getBookById = async (req, res) => {
         const id = req.params.id;
-        books.findById(id, (err, book) => {
-            if (err) {
-                res.status(500).send({ message: `${err.message}` });
-            } else {
-                res.status(200).send(book)
-            }
-        })
+        try {
+            const book = await books.findById(id);
+            res.status(200).send(book)
+        } catch (error) {
+            res.status(500).send({ message: "Erro ao buscar o livro informado", error: `${error.message}` });
+        }
+        
     }
 
-    static registerBook = (req, res) => {
-        const book = new books(req.body);
-        book.save((err) => {
-            if (err) {
-                res.status(500).send({ message: `${err.message}` });
-            } else {
-                res.status(201).send(book.toJSON())
-            }
-        })
+    static registerBook = async (req, res) => {
+        try {
+            const book = new books(req.body);
+            const responseBook = await book.save();
+            res.status(201).send(responseBook.toJSON())
+        } catch (error) {
+            res.status(500).send({ message: "Erro ao criar livro no banco", Erro: `$aa{error.message}` });
+        }
     }
 
     static updateBook = (req, res) => {
